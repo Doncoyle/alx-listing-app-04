@@ -6,7 +6,6 @@ export default function PropertyDetailPage() {
   const router = useRouter();
   const { id } = router.query; 
   
-  // Adding <any> fixes the red wavy line error on response.data
   const [property, setProperty] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -23,11 +22,9 @@ export default function PropertyDetailPage() {
         setLoading(false);
       }
     };
-
     fetchProperty();
   }, [id]); 
 
-  // You must include this return logic so the file isn't "empty"
   if (loading) return <p>Loading...</p>;
   if (!property) return <p>Property not found</p>;
 
